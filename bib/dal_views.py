@@ -1,6 +1,6 @@
 from dal import autocomplete
 from django.db.models import Q
-from . models import ZotItem
+from bib.models import ZotItem
 
 
 class ZotItemAC(autocomplete.Select2QuerySetView):

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ZotItem
+from bib.models import ZotItem
 
 
 class ZotItemSerializer(serializers.HyperlinkedModelSerializer):

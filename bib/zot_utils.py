@@ -1,6 +1,6 @@
 from pyzotero import zotero
 from django.conf import settings
-from . models import ZotItem
+from bib.models import ZotItem
 
 
 def items_to_dict(library_id, library_type, api_key, limit=15, since_version=None):

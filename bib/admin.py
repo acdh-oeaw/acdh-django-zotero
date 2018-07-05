@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ZotItem
+from bib.models import ZotItem
 
 
 class ZotItemAdmin(admin.ModelAdmin):
