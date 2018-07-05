@@ -68,7 +68,15 @@ Features
 --------
 
 * `bib` app registers a `ZotItem?  class which stores (some) information taken from a full zotero item entry. It provides then autocomplete functions for those ZotItem objects.
-The app also provides `management` commands to import items from a zotero library as well as to update existing items. The latter function can also be triggered through the front end.
+* The app also provides `management` commands to import items from a zotero library as well as to update existing items.
+
+    `python manage.py bib_import --limit=15` # imports the top 15 items
+    `python manage.py bib_import --since=100` # imports all items from library version 100
+    `python manage.py bib_import` # import everything
+
+    `python manage.py bib_update` # imports all items with a higher version number then the highest version number of the items stored in your db.
+
+* The latter function can also be triggered through the front end by browsing to `{root}/bib/synczotero`
 
 Build and publish
 -----
