@@ -62,8 +62,13 @@ def items_to_dict(library_id, library_type, api_key, limit=15, since_version=Non
             bib['version'] = "{}".format(x['data'].get('version'))
             bib['zot_html_link'] = "{}".format(x['links']['alternate']['href'])
             bib['zot_api_link'] = "{}".format(x['links']['self']['href'])
-            if bibtexs:
-                bib['zot_bibtex'] = "{}".format(bibtexs.entries[c])
+            if len(bibtexs.entries) == len(items):
+                try:
+                    bib['zot_bibtex'] = "{}".format(bibtexs.entries[c])
+                except IndexError:
+                    bib['zot_bibtex'] = ""
+            else:
+                bib['zot_bibtex'] = ""
             bibs.append(bib)
             c += 1
 
@@ -90,7 +95,10 @@ def create_zotitem(bib_item, get_bibtex=False):
     temp_item.zot_version = x['version']
     temp_item.zot_html_link = x['zot_html_link']
     temp_item.zot_api_link = x['zot_api_link']
-    temp_item.zot_bibtex = x['zot_bibtex']
+    try:
+        temp_item.zot_bibtex = x['zot_bibtex']
+    except KeyError:
+        pass
     if get_bibtex:
         temp_item.save(get_bibtex=True)
     else:

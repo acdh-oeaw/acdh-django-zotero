@@ -1,4 +1,5 @@
 import requests
+from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.shortcuts import render
 from django.views import generic
