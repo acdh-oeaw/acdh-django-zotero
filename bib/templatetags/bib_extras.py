@@ -9,10 +9,10 @@ def bib_quote(item):
     values = {}
     bib = json.loads(item.zot_bibtex.replace("'", '"'))
     quote = "{} ({}), {}, {}".format(
-            bib['author'],
-            bib['year'],
-            bib['title'],
-            bib['pages']
+            bib.get('author', ''),
+            bib.get('year', ''),
+            bib.get('title', ''),
+            bib.get('pages', ''),
         )
     values['quote'] = quote
     values['object'] = item
