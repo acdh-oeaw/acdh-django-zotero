@@ -47,8 +47,8 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 setup(
     name='acdh-django-zotero',
     version=version,
-    description="""A django package to store/process zotero items""",
-    long_description=readme + '\n\n' + history,
+    description="""A django package to store and process zotero items""",
+    long_description="A django package to store and process zotero items",
     author='Peter Andorfer',
     author_email='peter.andorfer@oeaw.ac.at',
     url='https://github.com/acdh-oeaw/acdh-django-zotero',
