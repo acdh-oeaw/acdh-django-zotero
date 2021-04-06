@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.urls import reverse
+import ast
 from django.db import models
 from django.conf import settings
 
@@ -8,6 +8,10 @@ from pyzotero import zotero
 library_id = settings.Z_ID
 library_type = settings.Z_LIBRARY_TYPE
 api_key = settings.Z_API_KEY
+try:
+    NN = settings.Z_NN
+except AttributeError:
+    NN = 'N.N.'
 
 
 def fetch_bibtex(zot_key):
@@ -97,3 +101,19 @@ class ZotItem(models.Model):
             super(ZotItem, self).save(*args, **kwargs)
         else:
             super(ZotItem, self).save(*args, **kwargs)
+
+    @property
+    def author(self):
+        authors = []
+        author_list = ast.literal_eval(self.zot_creator)
+        for x in author_list:
+            try:
+                author = f"{x['firstName']} {x['lastName']}"
+            except KeyError:
+                author = f"{x.get('name', '')}"
+            authors.append(author.strip())
+        author_name = " / ".join(authors)
+        if author_name:
+            return author_name
+        else:
+            return NN
