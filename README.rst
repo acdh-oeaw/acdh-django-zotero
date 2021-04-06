@@ -37,6 +37,7 @@ Add following Zotero settings to you settings-file:
         Z_ID = "{a valid zotero API user ID}"
         Z_LIBRARY_TYPE = 'group' # or 'user'
         Z_API_KEY = "{a valid Zotero API user key}"
+        Z_NN = {placeholder if no kind of creator is set, defaults to 'N.N.'}
 
 See [pyzotero](http://pyzotero.readthedocs.io/en/latest/) for more information
 
